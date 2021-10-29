@@ -1,0 +1,33 @@
+update-cache
+Q
+q
+colorscheme gruvbox
+colorscheme gruvbox_redux
+colorscheme gruvbox-night
+colorscheme groove_grove
+colorschme groove_grove
+colorscheme gruvbox-alt
+colrscheme gruvbox-alt
+colorscheme gruvbox_alt
+colorscheme gruvbox_grove
+win-update
+help
+refresh
+add ~/VolumeZ/Media Library/Music/
+clear
+bind -f common b win-toggle
+bind -f common space player-pause
+bind -f common p player-prev 
+bind -f common n player-next
+bind -f common space toggle continue
+bind -f common space win-toggle
+add ~/VolumeZ/Music/Library/
+update-cache 
+colorscheme dracula
+set color_win_inactive_cur_sel_fg=50fa7b
+set color_win_inactive_cur_sel_fg=#50fa7b
+set color_cmdline_attr=default
+add ~/VolumeZ/Torrents
+add ~/VolumZ/Torrents
+a
+add ~/VolumeZ/Music

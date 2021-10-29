@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Color-orange
+Comment=default GTK theme for linux
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Color-orange
+MetacityTheme=Color-orange
+IconTheme=Color-orange
+CursorTheme=Color-orange
+ButtonLayout=menu:minimize,maximize,close

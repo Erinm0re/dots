@@ -1,0 +1,555 @@
+
+[colors]
+;dracula
+;black = #282a36
+;grey = #44475a
+;white = #f8f8f2
+;blue = #6272a4
+;cyan = #8be9fd
+;green = #50fa7b
+;orange = #ffb86c
+;pink = #ff79c6
+;purple = #bd93f9
+;red = #ff5555
+;yellow = #f1fa8c
+
+;gruvbox
+black = #282828
+grey = #a89984
+white = #ebdbb2
+blue = #458588
+lblue = #83a598
+green = #b8bb26
+aqua = #8ec07c
+orange = #fe8019
+pink = #d3869b
+purple = #b16286
+red = #fb4934
+yellow = #fabd2f
+
+trans = #ffGGBBAA
+
+
+
+[bar/maini3]
+monitor = ${env:MONITOR}
+width = 100%
+height = 30
+radius = 2
+fixed-center = true
+bottom = true
+override-redirect = false
+
+;background = ${colors.grey}
+background = #70282828
+foreground = ${colors.black}
+line-size = 0
+line-color = #f00
+border-size = 5
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+
+font-0 = Inconsolata:size=10
+font-1 = Font Awesome 5 Free Regular:size=11
+font-2 = Font Awesome 5 Free Solid:size=11
+font-3 = Font Awesome 5 Brands Regular:size=11
+font-4 = Material Icons:size=14
+font-5 = Material Design Icons:size=14
+font-6 = mononoki Nerd Font Mono:style=Bold:size=23;5.3
+
+modules-left =  i3 space round-right
+modules-center = 
+modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+
+tray-position = right
+tray-padding = 1
+;tray-background = ${colors.grey}
+tray-transparent = true
+tray-detached = true
+tray-offset-x = -600px
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/spaceroy]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.yellow}
+content-background = ${colors.orange}
+
+[module/spaceryg]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.green}
+content-background = ${colors.yellow}
+
+[module/spacergb]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.blue}
+content-background = ${colors.green}
+
+[module/spacerbg]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.grey}
+content-background = ${colors.blue}
+
+[module/spacertb]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.orange}
+
+[module/space]
+type=custom/text
+content = "   "
+content-background = ${colors.grey}
+
+
+[module/puls]
+type = custom/script
+tail = true
+format-background = ${colors.blue}
+label-padding = 2
+label-foreground = ${colors.white}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = ~/.config/polybar/polyscripts/puls.bash --icons-volume " , " --icon-muted " " --sink-nicknames-from "alsa.card-name" --sink-nickname "Sink #0:  Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
+[module/vpn]
+type = custom/script
+exec = $HOME/.config/polybar/polybar-vpn-controller/vpn_module.sh
+click-left = $HOME/.config/polybar/polybar-vpn-controller/vpn_module.sh --toggle-connection &
+click-right = $HOME/.config/polybar/polybar-vpn-controller/vpn_module.sh --location-menu &
+click-middle = $HOME/.config/polybar/polybar-vpn-controller/vpn_module.sh --ip-address &
+interval = 5
+format = <label>
+format-background = ${color.mb}
+
+[module/audioplayer]
+type = custom/script
+exec = ~/.config/polybar/polyscripts/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/player-mpris-tail.py previous -b vlc -b plasma-browser-integration:}  %{A} %{A1:~/polybar-scripts/player-mpris-tail.py play-pause -b vlc -b plasma-browser-integration:} {icon-reversed} %{A} %{A1:~/polybar-scripts/player-mpris-tail.py next -b vlc -b plasma-browser-integration:}  %{A}' -b vlc -b plasma-browser-integration
+tail = true
+label-background = ${colors.grey}
+click-left = ~/polybar-scripts/player-mpris-tail.py previous &
+click-right = ~/polybar-scripts/player-mpris-tail.py next &
+click-middle = ~/polybar-scripts/player-mpris-tail.py play-pause &
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/ewmh]
+type = internal/xworkspaces
+format = <label-state> 
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = false
+pin-workspaces = false
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;
+icon-7 = 8;
+icon-8 = 9;
+icon-9 = 10;
+
+ws-icon-default =
+
+label-active = %icon%
+label-active-foreground = ${colors.black}
+label-active-background = ${colors.yellow}
+;label-active-underline = #fba922
+label-active-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
+;label-urgent-underline = #9b0a20
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.white}
+label-empty-background = ${colros.black}
+label-empty-padding = 2
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.black}
+label-occupied-background = ${colors.grey}
+label-occupied-padding = 2
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> 
+index-sort = true
+wrapping-scroll = false
+
+strip-wsnumbers = false
+pin-workspaces = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-10 = 11;
+ws-icon-11 = 12;
+
+ws-icon-default =
+
+label-focused = %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.yellow}
+;label-focused-underline = #fba922
+label-focused-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
+;label-urgent-underline = #9b0a20
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.white}
+label-empty-background = ${colors.black}
+label-empty-padding = 2
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.black}
+label-occupied-background = ${colors.grey}
+label-occupied-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+pin-workspaces = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+ws-icon-default =
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.black}
+label-mode-background = ${colors.red}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-background = ${colors.yellow}
+label-focused-foreground= ${colors.black}
+label-focused-padding = 2
+;label-focused-margin-right = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-background = ${colors.grey}
+label-unfocused-foreground = ${colors.black}
+label-unfocused-padding = 2
+;label-unfocused-margin-right = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+label-visible-background = ${colors.orange}
+label-visible-foreground = ${colors.black}
+label-visible-padding = 2
+;label-visible-margin-right = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+;%index%
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+host = 127.0.0.1
+port = 6600
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = 
+format-prefix-foreground = ${colors.black}
+label-foreground = ${colors.black}
+format-padding = 1
+format-background = ${colors.green}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = 
+format-prefix-foreground = ${colors.black}
+format-padding = 1
+format-background = ${colors.yellow}
+label = %percentage_used%%
+label-foreground = ${colors.black}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.black}
+format-padding = 1
+format-background = ${colors.blue}
+
+label = %date% %time%
+label-foreground = ${colors.black}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+label-volume-padding = 1
+format-volume = <label-volume> <bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${colors.black}
+
+label-muted = 
+label-muted-foreground = ${colors.black}
+
+label-muted-padding = 2
+label-muted-background = ${colors.orange}
+format-volume-padding = 1
+format-volume-background = ${colors.orange}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.black}
+bar-volume-foreground-1 = ${colors.black}
+bar-volume-foreground-2 = ${colors.black}
+bar-volume-foreground-3 = ${colors.black}
+bar-volume-foreground-4 = ${colors.black}
+bar-volume-foreground-5 = ${colors.black}
+bar-volume-foreground-6 = ${colors.black}
+bar-volume-gradient = false
+bar-volume-indicator = \
+bar-volume-indicator-font = 3
+bar-volume-fill = ─
+bar-volume-fill-font = 3
+bar-volume-empty = ─
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = ${colors.black}
+
+;[module/alsa]
+;type = internal/alsa
+
+;format-volume = <label-volume> <bar-volume>
+;label-volume = VOL
+;label-volume-foreground = ${root.foreground}
+
+;format-muted-prefix = " "
+;format-muted-foreground = ${colors.foreground-alt}
+;label-muted = sound muted
+
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = |
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+format-padding = 2
+format-background = ${colors.grey}
+
+label-open = 
+label-open-foreground = ${colors.black}
+label-close = 
+label-close-foreground = ${colors.red}
+label-separator = |
+label-separator-foreground = ${colors.black}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+[bar/mainxmo]
+monitor = ${env:MONITOR}
+width = 100%
+height = 30
+;offset-x = -50%
+;offset-y =
+radius = 10
+fixed-center = true
+bottom = true
+override-redirect = false
+
+background = #70282828
+foreground = ${colors.black}
+line-size = 0
+line-color = #f00
+border-size = 5
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+
+font-0 = Inconsolata:size=10
+font-1 = Font Awesome 5 Free Regular:size=10
+font-2 = Font Awesome 5 Free Solid:size=10
+font-3 = Font Awesome 5 Brands Regular:size=10
+font-4 = Material Icons:size=14
+font-5 = Material Design Icons:size=14
+font-6 = mononoki Nerd Font Mono:style=Bold:size=23;5.3
+
+modules-left =   ewmh space round-right
+modules-center =
+modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+
+tray-position = right
+tray-padding = 1
+;tray-background = ${colors.grey}
+tray-transparent = true
+tray-detached = true
+tray-offset-x = -600px
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/mainbsp]
+monitor = ${env:MONITOR}
+width = 100%
+height = 30
+;offset-x = -50%
+;offset-y =
+radius = 10
+fixed-center = true
+bottom = true
+override-redirect = false
+
+
+background = #70282828
+foreground = ${colors.black}
+line-size = 0
+line-color = #f00
+border-size = 5
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+
+font-0 = Inconsolata:size=10
+font-1 = Font Awesome 5 Free Regular:size=10
+font-2 = Font Awesome 5 Free Solid:size=10
+font-3 = Font Awesome 5 Brands Regular:size=10
+font-4 = Material Icons:size=14
+font-5 = Material Design Icons:size=14
+font-6 = mononoki Nerd Font Mono:style=Bold:size=23;5.3
+
+modules-left =   bspwm space round-right
+modules-center =
+modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+
+tray-position = right
+tray-padding = 1
+;tray-background = ${colors.grey}
+tray-transparent = true
+tray-detached = true
+tray-offset-x = -600px
+
+;override-redirect = true
+
+;scroll-up = bspwm-wsnext
+;scroll-down = bspwm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+

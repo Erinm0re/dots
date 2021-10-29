@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Color-new-blue
+Comment=default GTK theme for linux
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Color-new-blue
+MetacityTheme=Color-new-blue
+IconTheme=Color-new-blue
+CursorTheme=Color-new-blue
+ButtonLayout=menu:minimize,maximize,close
