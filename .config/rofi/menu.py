@@ -3,19 +3,11 @@ import rofi_menu
 
 T = "code"
 
-class ProjectsMenu(rofi_menu.Menu):
+class Lutris(rofi_menu.Menu):
     prompt = "configs"
     items = [
         rofi_menu.BackItem(),
-        rofi_menu.ShellItem("Menu",  "code ~/.config/rofi/menu.py"),
-        rofi_menu.ShellItem("I3",  "code ~/.config/i3/config"),
-        rofi_menu.ShellItem("Xmonad",  "code ~/.xmonad/xmonad.hs"),
-        rofi_menu.ShellItem("Bspwm",  "code ~/.config/bspwm/bspwmrc"),
-        rofi_menu.ShellItem("Sxhkd",  "code ~/.config/sxhkd/sxhkdrc"),
-        rofi_menu.ShellItem("Polybar", "code ~/.config/polybar/config"),
-        rofi_menu.ShellItem("Fish",  "code ~/.config/fish/config.fish"),
-        rofi_menu.ShellItem("Picom", "code ~/.config/picom.conf"),
-        rofi_menu.ShellItem("Kitty",  "code ~/.config/kitty/kitty.conf"),
+        rofi_menu.ShellItem("Battle.net",  "lutris battlenet"),
     ]
 
 
@@ -45,7 +37,12 @@ class poweroffMenu(rofi_menu.Menu):
 class MainMenu(rofi_menu.Menu):
     prompt = "menu"
     items = [
-        rofi_menu.NestedMenu("Projects >", ProjectsMenu()),
+        rofi_menu.ShellItem("Configs >", "dm-confedit"),
+        rofi_menu.NestedMenu("Lutris >", Lutris()),
+        rofi_menu.ShellItem("Screenshot >", "dm-maim"),
+        rofi_menu.ShellItem("Search >", "dm-websearch"),
+        rofi_menu.ShellItem("Manuals >", "dm-man"),
+        rofi_menu.ShellItem("Notes >", "dm-note"),
         rofi_menu.ShellItem("Lock screen", "i3lock -i ~/.config/i3/bg.png"),
         rofi_menu.ShellItem("Sleep", "systemctl suspend"),
         rofi_menu.NestedMenu("Logout", LogoutMenu()),

@@ -1,12 +1,32 @@
+set output_plugin=pulse
+set mixer.alsa.device=plughw:2,0
+set mixer.alsa.device=hw:2,0
+set mixer.alsa.channel=
+set output_plugin=alsa
+set mixer.alsa.device=0
+set mixer.alsa.channel=2
+set mixer.alsa.channel=1
+set output_plugin=pulsa
 update-cache
+clear
+update-cacher
+cache-update
+a Music/
+a
+bind -f common l seek +20
+bind -f common h seek -20
+bind -f common x search-start
+bind -f common , search-prev
+bind -f common . search-next
+massive
+colorscheme gruvbox
+colorscheme gruvbox-alt
+colorscheme gruvbox-night
 Q
 q
-colorscheme gruvbox
 colorscheme gruvbox_redux
-colorscheme gruvbox-night
 colorscheme groove_grove
 colorschme groove_grove
-colorscheme gruvbox-alt
 colrscheme gruvbox-alt
 colorscheme gruvbox_alt
 colorscheme gruvbox_grove
@@ -14,7 +34,6 @@ win-update
 help
 refresh
 add ~/VolumeZ/Media Library/Music/
-clear
 bind -f common b win-toggle
 bind -f common space player-pause
 bind -f common p player-prev 
@@ -29,5 +48,4 @@ set color_win_inactive_cur_sel_fg=#50fa7b
 set color_cmdline_attr=default
 add ~/VolumeZ/Torrents
 add ~/VolumZ/Torrents
-a
 add ~/VolumeZ/Music

@@ -20,28 +20,28 @@ set color_statusline_bg=237
 set color_statusline_fg=72
 set color_titleline_attr=default
 set color_titleline_bg=236
-set color_titleline_fg=142
+set color_titleline_fg=220
 set color_trackwin_album_attr=bold
 set color_trackwin_album_bg=default
 set color_trackwin_album_fg=default
 set color_win_attr=default
 set color_win_bg=default
-set color_win_cur=175
+set color_win_cur=214
 set color_win_cur_attr=default
 set color_win_cur_sel_attr=default
 set color_win_cur_sel_bg=237
-set color_win_cur_sel_fg=175
-set color_win_dir=229
+set color_win_cur_sel_fg=214
+set color_win_dir=220
 set color_win_fg=default
 set color_win_inactive_cur_sel_attr=default
 set color_win_inactive_cur_sel_bg=236
-set color_win_inactive_cur_sel_fg=175
+set color_win_inactive_cur_sel_fg=214
 set color_win_inactive_sel_attr=default
 set color_win_inactive_sel_bg=236
-set color_win_inactive_sel_fg=229
+set color_win_inactive_sel_fg=220
 set color_win_sel_attr=bold
 set color_win_sel_bg=237
-set color_win_sel_fg=229
+set color_win_sel_fg=220
 set color_win_title_attr=default
 set color_win_title_bg=246
 set color_win_title_fg=235
@@ -59,7 +59,7 @@ set dsp.ao.wav_dir=/home/philipp
 set dsp.jack.resampling_quality=2
 set dsp.jack.server_name=
 set dsp.oss.device=
-set follow=false
+set follow=true
 set format_current= %a - %l -%3n. %t%= %y 
 set format_playlist= %-21%a %3n. %t%= %y %d %{?X!=0?%3X ?    }
 set format_playlist_va= %-21%A %3n. %t (%a)%= %y %d %{?X!=0?%3X ?    }
@@ -81,13 +81,14 @@ set input.flac.priority=50
 set input.mad.priority=55
 set input.modplug.priority=50
 set input.mpc.priority=50
+set input.opus.priority=50
 set input.vorbis.priority=50
 set input.wav.priority=50
 set input.wavpack.priority=50
 set lib_add_filter=
 set lib_sort=albumartist date album discnumber tracknumber title filename play_count
 set mixer.alsa.channel=
-set mixer.alsa.device=
+set mixer.alsa.device=plughw:2,0
 set mixer.oss.channel=PCM
 set mixer.oss.device=
 set mixer.pulse.restore_volume=1
@@ -97,7 +98,7 @@ set output_plugin=pulse
 set passwd=
 set pl_sort=
 set play_library=true
-set play_sorted=false
+set play_sorted=true
 set repeat=false
 set repeat_current=false
 set replaygain=disabled
@@ -111,7 +112,7 @@ set show_all_tracks=true
 set show_current_bitrate=false
 set show_hidden=false
 set show_playback_position=true
-set show_remaining_time=false
+set show_remaining_time=true
 set shuffle=false
 set skip_track_info=false
 set smart_artist_sort=true
@@ -130,9 +131,9 @@ bind browser space win-activate
 bind browser u win-update
 bind common ! push shell 
 bind common + vol +10%
-bind common , seek -1m
+bind common , search-prev
 bind common - vol -10%
-bind common . seek +1m
+bind common . search-next
 bind common / search-start
 bind common 1 view tree
 bind common 2 view sorted
@@ -153,7 +154,7 @@ bind common L push live-filter
 bind common M toggle play_library
 bind common N search-prev
 bind common P win-mv-before
-bind common U win-update-cache
+bind common U add ~/VolumeZ/Media Library/Music/
 bind common [ vol +1% +0
 bind common ] vol +0 +1%
 bind common ^B win-page-up
@@ -175,12 +176,12 @@ bind common end win-bottom
 bind common enter win-activate
 bind common f toggle follow
 bind common g win-top
-bind common h seek -5
+bind common h seek -20
 bind common home win-top
 bind common i win-sel-cur
 bind common j win-down
 bind common k win-up
-bind common l seek +5
+bind common l seek +20
 bind common left seek -5
 bind common m toggle aaa_mode
 bind common mlb_click_bar player-pause
@@ -203,10 +204,10 @@ bind common s toggle shuffle
 bind common space player-pause
 bind common t toggle show_remaining_time
 bind common tab win-next
-bind common u update-cache
+bind common u clear
 bind common up win-up
 bind common v player-stop
-bind common x player-play
+bind common x search-start
 bind common y win-add-p
 bind common z player-prev
 bind common { vol -1% -0

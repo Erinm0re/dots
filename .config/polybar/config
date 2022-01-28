@@ -75,6 +75,12 @@ scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[module/spacerleft]
+type=custom/text
+content=%{T7}%{T-}
+content-foreground = ${colors.grey}
+;content-background = ${colors.orange}
+
 [module/spaceroy]
 type=custom/text
 content=%{T7}%{T-}
@@ -107,7 +113,7 @@ content-foreground = ${colors.orange}
 [module/space]
 type=custom/text
 content = "   "
-content-background = ${colors.grey}
+content-background = ${colors.black}
 
 
 [module/puls]
@@ -205,7 +211,7 @@ pin-workspaces = false
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
@@ -220,7 +226,7 @@ ws-icon-default =
 
 label-focused = %icon%
 label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.yellow}
+label-focused-background = ${colors.pink}
 ;label-focused-underline = #fba922
 label-focused-padding = 2
 
@@ -236,8 +242,8 @@ label-empty-background = ${colors.black}
 label-empty-padding = 2
 
 label-occupied = %icon%
-label-occupied-foreground = ${colors.black}
-label-occupied-background = ${colors.grey}
+label-occupied-foreground = ${colors.white}
+label-occupied-background = ${colors.black}
 label-occupied-padding = 2
 
 [module/i3]
@@ -301,12 +307,12 @@ type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
 icon-prev = 
-icon-stop = 
+icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
 
-label-song-maxlen = 25
+label-song-maxlen = 80
 label-song-ellipsis = true
 host = 127.0.0.1
 port = 6600
@@ -314,22 +320,23 @@ port = 6600
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = 
-format-prefix-foreground = ${colors.black}
-label-foreground = ${colors.black}
+#format-prefix = :
+format-prefix = :
+format-prefix-foreground = ${colors.white}
+label-foreground = ${colors.white}
 format-padding = 1
-format-background = ${colors.green}
+format-background = ${colors.black}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = 
-format-prefix-foreground = ${colors.black}
+format-prefix = :
+format-prefix-foreground = ${colors.white}
 format-padding = 1
-format-background = ${colors.yellow}
+format-background = ${colors.black}
 label = %percentage_used%%
-label-foreground = ${colors.black}
+label-foreground = ${colors.white}
 
 [module/date]
 type = internal/date
@@ -342,45 +349,46 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${colors.black}
+format-prefix-foreground = ${colors.lblue}
 format-padding = 1
-format-background = ${colors.blue}
+format-background = ${colors.black}
 
 label = %date% %time%
-label-foreground = ${colors.black}
+label-foreground = ${colors.lblue}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 label-volume-padding = 1
+
 format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
-label-volume-foreground = ${colors.black}
+label-volume-foreground = ${colors.white}
 
 label-muted = 
-label-muted-foreground = ${colors.black}
+label-muted-foreground = ${colors.white}
 
 label-muted-padding = 2
-label-muted-background = ${colors.orange}
+label-muted-background = ${colors.black}
 format-volume-padding = 1
-format-volume-background = ${colors.orange}
+format-volume-background = ${colors.black}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.black}
-bar-volume-foreground-1 = ${colors.black}
-bar-volume-foreground-2 = ${colors.black}
-bar-volume-foreground-3 = ${colors.black}
-bar-volume-foreground-4 = ${colors.black}
-bar-volume-foreground-5 = ${colors.black}
-bar-volume-foreground-6 = ${colors.black}
+bar-volume-width = 15
+bar-volume-foreground-0 = ${colors.blue}
+bar-volume-foreground-1 = ${colors.blue}
+bar-volume-foreground-2 = ${colors.blue}
+bar-volume-foreground-3 = ${colors.blue}
+bar-volume-foreground-4 = ${colors.blue}
+bar-volume-foreground-5 = ${colors.blue}
+bar-volume-foreground-6 = ${colors.blue}
 bar-volume-gradient = false
-bar-volume-indicator = \
+bar-volume-indicator = ■
 bar-volume-indicator-font = 3
-bar-volume-fill = ─
+bar-volume-fill = ■
 bar-volume-fill-font = 3
-bar-volume-empty = ─
+bar-volume-empty = ■
 bar-volume-empty-font = 3
-bar-volume-empty-foreground = ${colors.black}
+bar-volume-empty-foreground = ${colors.grey}
 
 ;[module/alsa]
 ;type = internal/alsa
@@ -417,14 +425,14 @@ expand-right = true
 
 format-spacing = 1
 format-padding = 2
-format-background = ${colors.grey}
+format-background = ${colors.black}
 
 label-open = 
-label-open-foreground = ${colors.black}
+label-open-foreground = ${colors.white}
 label-close = 
 label-close-foreground = ${colors.red}
 label-separator = |
-label-separator-foreground = ${colors.black}
+label-separator-foreground = ${colors.white}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -455,7 +463,7 @@ margin-bottom = 5
 
 ; vim:ft=dosini
 
-[bar/mainxmo]
+[bar/mainxmooo]
 monitor = ${env:MONITOR}
 width = 100%
 height = 30
@@ -506,44 +514,48 @@ cursor-scroll = ns-resize
 [bar/mainbsp]
 monitor = ${env:MONITOR}
 width = 100%
-height = 30
+height = 28
 ;offset-x = -50%
 ;offset-y =
-radius = 10
+radius = 8
 fixed-center = true
-bottom = true
+bottom = false
 override-redirect = false
 
 
-background = #70282828
-foreground = ${colors.black}
+background = ${colors.black}
+;background = #99282828
+foreground = ${colors.white}
 line-size = 0
 line-color = #f00
-border-size = 5
+border-size = 8
+border-bottom-size = 0
+
 border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 0
+module-margin-left = 2
 
-font-0 = Inconsolata:size=10
+font-0 = Hermit:size=10 
 font-1 = Font Awesome 5 Free Regular:size=10
 font-2 = Font Awesome 5 Free Solid:size=10
 font-3 = Font Awesome 5 Brands Regular:size=10
-font-4 = Material Icons:size=14
-font-5 = Material Design Icons:size=14
+font-4 = Material Icons:size=20
+font-5 = Material Design Icons:size=20
 font-6 = mononoki Nerd Font Mono:style=Bold:size=23;5.3
 
-modules-left =   bspwm space round-right
-modules-center =
-modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+modules-left =   bspwm
+modules-center = mpd
+;modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+modules-right = pulseaudio memory cpu date space
 
 tray-position = right
 tray-padding = 1
 ;tray-background = ${colors.grey}
 tray-transparent = true
 tray-detached = true
-tray-offset-x = -600px
+tray-offset-x = -500px
 
 ;override-redirect = true
 
@@ -553,3 +565,57 @@ tray-offset-x = -600px
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+
+[bar/mainxmo]
+monitor = ${env:MONITOR}
+width = 100%
+height = 30
+;offset-x = -50%
+;offset-y =
+radius = 1
+fixed-center = true
+bottom = false
+override-redirect = false
+
+
+background = ${colors.black}
+;background = #99282828
+foreground = ${colors.white}
+line-size = 0
+line-color = #f00
+border-size = 0
+border-bottom-size = 0
+
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 2
+
+font-0 = Hermit:size=8 
+font-1 = Font Awesome 5 Free Regular:size=10
+font-2 = Font Awesome 5 Free Solid:size=10
+font-3 = Font Awesome 5 Brands Regular:size=10
+font-4 = Material Icons:size=14
+font-5 = Material Design Icons:size=14
+font-6 = mononoki Nerd Font Mono:style=Bold:size=23;5.3
+
+modules-left =  ewmh
+modules-center =
+;modules-right = spacertb pulseaudio spaceroy memory spaceryg cpu spacergb date spacerbg powermenu space
+modules-right = pulseaudio memory cpu date space
+
+tray-position = right
+tray-padding = 1
+;tray-background = ${colors.grey}
+tray-transparent = true
+tray-detached = true
+tray-offset-x = -470px
+
+;override-redirect = true
+
+;scroll-up = bspwm-wsnext
+;scroll-down = bspwm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize

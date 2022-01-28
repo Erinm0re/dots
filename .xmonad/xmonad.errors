@@ -1,8 +1,0 @@
-
-xmonad.hs:218:12: warning: [-Wdeprecations]
-    In the use of ‘spacingWithEdge’
-    (imported from XMonad.Layout.Spacing):
-    Deprecated: "Use spacingRaw instead."
-    |
-218 | myLayout = spacingWithEdge 10 $avoidStruts $smartBorders ( tiled ||| reflectHoriz tiled ||| Mirror tiled )
-    |            ^^^^^^^^^^^^^^^
