@@ -1,3 +1,5 @@
-gaia.attached_device_id="f6c1843ba8fc0d3d5bd8e44f0a67c4a9d75ef1b6"
+gaia.attached_device_id="9473906afb4828947f00725e45749a5154952341"
 audio.play_bitrate_non_metered_migrated=true
-app.player.volume=45875
+audio.crossfade_v2=true
+app.player.volume=58488
+audio.crossfade.time_v2=1542
